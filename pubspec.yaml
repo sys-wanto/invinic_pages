@@ -1,0 +1,37 @@
+name: invinic
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment:
+  sdk: ">=3.4.4 <4.0.0"
+
+dependencies:
+  cupertino_icons: ^1.0.6
+  get: 4.6.6
+  flutter:
+    sdk: flutter
+  seo_renderer: ^0.6.0
+
+dev_dependencies:
+  flutter_lints: 4.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: Dosis
+      fonts:
+        - asset: assets/fonts/Dosis-ExtraLight.ttf
+        - asset: assets/fonts/Dosis-Light.ttf
+          weight: 200
+        - asset: assets/fonts/Dosis-Book.ttf
+          weight: 300
+        - asset: assets/fonts/Dosis-Medium.ttf
+          weight: 400
+        - asset: assets/fonts/Dosis-SemiBold.ttf
+          weight: 500
+        - asset: assets/fonts/Dosis-Bold.ttf
+          weight: 600
+        - asset: assets/fonts/Dosis-ExtraBold.ttf
+          weight: 700
