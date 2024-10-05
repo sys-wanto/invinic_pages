@@ -1,58 +1,52 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:seo_renderer/renderers/link_renderer/link_renderer_vm.dart';
-import 'package:seo_renderer/renderers/text_renderer/text_renderer_style.dart';
-import 'package:seo_renderer/renderers/text_renderer/text_renderer_vm.dart';
+import 'package:invinic/app/modules/home/controllers/home_controller.dart';
+import 'package:invinic/app/modules/home/views/content/advantages_view.dart';
+import 'package:invinic/app/modules/home/views/content/call_to_act_view.dart';
+import 'package:invinic/app/modules/home/views/content/conclusion_view.dart';
+import 'package:invinic/app/modules/home/views/content/contact_us_view.dart';
+import 'package:invinic/app/modules/home/views/content/head_line_view.dart';
+import 'package:invinic/app/modules/home/views/content/services_view.dart';
+import 'package:invinic/app/modules/home/views/content/short_description_view.dart';
+import 'package:invinic/app/modules/template/app_bar_widget.dart';
 
-import '../controllers/home_controller.dart';
+import 'package:invinic/app/modules/template/bottom_navbar_widget.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: LinkRenderer(
-          href: 'http://in-vinic.com/',
-          text: 'invinic logo',
-          child: InkWell(
-            onTap: () {},
-            hoverColor: Colors.white.withOpacity(1),
-            splashColor: Colors.white.withOpacity(1),
-            focusColor: Colors.white.withOpacity(1),
-            child: Text('INVINIC_'),
+    return GetBuilder<HomeController>(builder: (ctx) {
+      return Scaffold(
+        appBar: AppBarWidget(),
+        body: SingleChildScrollView(
+          controller: ctx.scrollController,
+          physics: BouncingScrollPhysics(),
+          child: Column(
+            children: [
+              HeadLine_view(),
+              ShortDescription_view(),
+              Advantages_view(),
+              Services_view(),
+              Conclusion_view(),
+              Call_to_act_view(),
+              Contact_us_view(),
+            ],
           ),
         ),
-        centerTitle: false,
-        actions: [
-          Center(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8),
-              child: LinkRenderer(
-                href: 'http://in-vinic.com/',
-                text: 'invinic logo',
-                child: Text('Contact'),
-              ),
-            ),
-          ),
-          Center(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8),
-              child: Text('Agents'),
-            ),
-          ),
-        ],
-      ),
-      body: const Center(
-        child: TextRenderer(
-          style: TextRendererStyle.paragraph,
-          child: Text(
-            'HomeView is working',
-            style: TextStyle(fontSize: 20),
+        bottomNavigationBar: BottomNavBarWidget(),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => {
+            ctx.isScrolling.value ? null : ctx.fabAction(),
+          },
+          child: Obx(
+            () => Icon(ctx.scrollPosition.value == 7
+                ? Icons.arrow_upward
+                : Icons.arrow_downward),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

@@ -1,19 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:seo_renderer/seo_renderer.dart';
+import 'package:get/get.dart';
+import 'package:invinic/app/modules/agents/views/agents_view.dart';
+import 'package:invinic/app/modules/contact/views/contact_view.dart';
+import 'package:invinic/app/modules/portofolio/views/portofolio_view.dart';
+import 'package:seo/html/seo_widget.dart';
 
 class Mixin {
-  Mixin._();
-  LinkRenderer buttonRenderer(
-      String hrefSEO, String textSEO, String textButton, Function? callback) {
-    return LinkRenderer(
+  Widget buttonRenderer(String hrefSEO, String textSEO, String textButton,
+      VoidCallback callback, double fontSize) {
+    return Seo.link(
       href: hrefSEO,
-      text: textSEO,
+      anchor: textSEO,
       child: InkWell(
-        onTap: () => callback,
-        hoverColor: Colors.white.withOpacity(1),
-        splashColor: Colors.white.withOpacity(1),
-        focusColor: Colors.white.withOpacity(1),
-        child: Text(textButton),
+        onTap: callback,
+        hoverColor: Colors.white.withOpacity(0),
+        splashColor: Colors.white.withOpacity(0),
+        focusColor: Colors.white.withOpacity(0),
+        highlightColor: Colors.white.withOpacity(0),
+        child: Text(
+          textButton,
+          style: TextStyle(
+            fontSize: fontSize,
+          ),
+        ),
       ),
     );
   }

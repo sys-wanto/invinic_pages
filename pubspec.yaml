@@ -10,7 +10,11 @@ dependencies:
   get: 4.6.6
   flutter:
     sdk: flutter
-  seo_renderer: ^0.6.0
+  flutter_web_plugins:
+    sdk: flutter
+  seo: ^0.0.7
+  flutter_svg: ^2.0.10+1
+  animated_svg: ^2.0.0
 
 dev_dependencies:
   flutter_lints: 4.0.0
@@ -19,19 +23,21 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/svg/
   fonts:
     - family: Dosis
       fonts:
-        - asset: assets/fonts/Dosis-ExtraLight.ttf
-        - asset: assets/fonts/Dosis-Light.ttf
+        - asset: fonts/Dosis-ExtraLight.ttf
+        - asset: fonts/Dosis-Light.ttf
           weight: 200
-        - asset: assets/fonts/Dosis-Book.ttf
+        - asset: fonts/Dosis-Book.ttf
           weight: 300
-        - asset: assets/fonts/Dosis-Medium.ttf
+        - asset: fonts/Dosis-Medium.ttf
           weight: 400
-        - asset: assets/fonts/Dosis-SemiBold.ttf
+        - asset: fonts/Dosis-SemiBold.ttf
           weight: 500
-        - asset: assets/fonts/Dosis-Bold.ttf
+        - asset: fonts/Dosis-Bold.ttf
           weight: 600
-        - asset: assets/fonts/Dosis-ExtraBold.ttf
+        - asset: fonts/Dosis-ExtraBold.ttf
           weight: 700
